@@ -106,7 +106,7 @@
             </header>
             <!--  Header End -->
             <div class="container-fluid">
-                <h3 class="fw-bold">{{ $title ?? '' }}</h3>
+                <h3 class="mb-3"><strong>{{ $title ?? '' }}</strong></h3>
                 @if (session('success'))
                     <div class="alert alert-primary" role="alert">
                         <strong>Horeeee 😁</strong> {{ session('success') }}
@@ -114,7 +114,8 @@
                 @elseif ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>Opuups </strong> Alert Content
+                        <strong>Oooouupps 😮</strong> Ada yang salah dengan inputan anda. Harap untuk melakukan
+                        penginputan ulang.
                     </div>
                 @endif
                 {{ $slot }}

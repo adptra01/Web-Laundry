@@ -47,14 +47,24 @@ Route::prefix('services')->group(function () {
 
 });
 
+Route::prefix('transactions')->group(function () {
+
+    Route::get('/', [TransactionController::class, 'index'])->name('transactions');
+    Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
+    Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
+    Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+
+});
+
 // Route::prefix('services')->group(function () {
 
 //     Route::post('/', [ServiceController::class, 'store'])->name('services.store');
 
 // });
 
-Route::prefix('transactions')->group(function () {
+// Route::prefix('transactions')->group(function () {
 
-    Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
+//     Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
 
-});
+// });
