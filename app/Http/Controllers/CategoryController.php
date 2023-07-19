@@ -15,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
-            'categories' => Category::get()
+            'categories' => Category::latest()->get()
         ]);
     }
 
@@ -32,7 +32,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'estimate' => $request->estimate,
         ]);
-        return back();
+        return back()->with('success', 'Created category successfully');
     }
 
     /**
@@ -43,7 +43,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('category.show', [
+            'category' => Category::whereId($id)->first()
+        ]);
     }
 
     /**
@@ -55,7 +57,12 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Category::whereId($id)->update([
+            'name' => $request->name,
+            'estimate' => $request->estimate,
+        ]);
+        return redirect()->route('categories')->with('success', 'Updated category successfully');
+
     }
 
     /**
@@ -66,6 +73,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::whereId($id)->delete();
+        return back()->with('success', 'Deleted category successfully');
     }
 }

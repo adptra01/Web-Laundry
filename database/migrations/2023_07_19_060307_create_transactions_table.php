@@ -17,12 +17,13 @@ class CreateTransactionsTable extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate(' cascade');
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->onUpdate(' cascade');
+            $table->string('weight');
+            $table->string('totalTransaction');
             $table->string('costumer');
             $table->string('telp');
             $table->string('address');
+            $table->boolean('payment');
             $table->boolean('status')->default(false);
-            $table->string('weight');
-            $table->string('total')->nullable();
             $table->timestamps();
         });
     }
