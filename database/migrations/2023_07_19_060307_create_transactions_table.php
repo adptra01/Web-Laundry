@@ -15,6 +15,14 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade')->onUpdate(' cascade');
+            $table->foreignId('service_id')->constrained('services')->onDelete('cascade')->onUpdate(' cascade');
+            $table->string('costumer');
+            $table->string('telp');
+            $table->string('address');
+            $table->boolean('status')->default(false);
+            $table->string('weight');
+            $table->string('total')->nullable();
             $table->timestamps();
         });
     }

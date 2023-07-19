@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TransactionController;
+use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +35,11 @@ Route::prefix('categories')->group(function () {
 Route::prefix('services')->group(function () {
 
     Route::post('/', [ServiceController::class, 'store'])->name('services.store');
+
+});
+
+Route::prefix('transactions')->group(function () {
+
+    Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
 
 });

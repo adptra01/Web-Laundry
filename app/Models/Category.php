@@ -17,4 +17,8 @@ class Category extends Model
     {
         return $this->hasMany(Services::class);
     }
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
 }
