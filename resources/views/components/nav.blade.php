@@ -44,10 +44,10 @@
         </a>
     </li>
     <li class="sidebar-item">
-        <a class="sidebar-link" href="{{ route('services') }}" aria-expanded="false">
+        <a class="sidebar-link" href="{{ route('transactions.report') }}" aria-expanded="false">
             <span>
                 <i class="ti ti-layout-dashboard"></i>
             </span>
-            <span class="hide-menu">Layanan</span>
+            <span class="hide-menu">Laporan</span>
         </a>
     </li>

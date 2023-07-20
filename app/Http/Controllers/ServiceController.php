@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ServiceController extends Controller
             'services' => Service::latest()->get(),
         ]);
     }
-    public function store(Request $request)
+    public function store(ServiceRequest $request)
     {
         Service::create([
             'category_id' => $request->category_id,
@@ -35,7 +36,7 @@ class ServiceController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ServiceRequest $request, $id)
     {
         Service::whereId($id)->update([
             'category_id' => $request->category_id,

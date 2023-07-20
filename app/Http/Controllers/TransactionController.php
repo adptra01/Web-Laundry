@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TransactionRequest;
 use App\Models\Category;
 use App\Models\Service;
 use App\Models\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -17,8 +19,9 @@ class TransactionController extends Controller
             'categories' => Category::get(),
         ]);
     }
-    public function store(Request $request)
+    public function store(TransactionRequest $request)
     {
+        $invoice = 'LDRY/'.Carbon::now()->format('dmy').$request->costumer;
         Transaction::create([
             'category_id' => $request->category_id,
             'service_id' => $request->service_id,
@@ -27,7 +30,8 @@ class TransactionController extends Controller
             'costumer' => $request->costumer,
             'telp' => $request->telp,
             'address' => $request->address,
-            'payment' => $request->payment
+            'payment' => $request->payment,
+            'invoice' => $invoice
         ]);
 
         return back()->with('success', 'Created transaction successfully');
@@ -39,6 +43,13 @@ class TransactionController extends Controller
             'transaction' => Transaction::whereId($id)->first(),
             'services' => Service::get(),
             'categories' => Category::get(),
+        ]);
+    }
+
+    public function report()
+    {
+        return view('transaction.report', [
+            'transactions' => Transaction::get()
         ]);
     }
 }

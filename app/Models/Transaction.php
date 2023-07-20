@@ -10,7 +10,7 @@ class Transaction extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'service_id', 'costumer', 'telp', 'address', 'weight', 'totalTransaction', 'status', 'payment'
+        'category_id', 'service_id', 'costumer', 'telp', 'address', 'weight', 'totalTransaction', 'status', 'payment', 'invoice'
     ];
 
     public function category()

@@ -54,17 +54,7 @@ Route::prefix('transactions')->group(function () {
     Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
     Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
     Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+    Route::get('/report', [TransactionController::class, 'report'])->name('transactions.report');
 
 });
 
-// Route::prefix('services')->group(function () {
-
-//     Route::post('/', [ServiceController::class, 'store'])->name('services.store');
-
-// });
-
-// Route::prefix('transactions')->group(function () {
-
-//     Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
-
-// });

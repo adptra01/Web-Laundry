@@ -77,7 +77,13 @@
                 </div>
                 <div class="col-md">
                     <div class="mb-3">
-                        <label for="payment" class="form-label">Pembayaran</label>
+                        <label for="payment" class="form-label">Pembayaran
+                            @if ($transaction->payment == 0)
+                                <span class="text-warning"><i class="ti ti-alert-circle"></i> </span>
+                            @else
+                                <span class="text-success"> ✔</span>
+                            @endif
+                        </label>
                         <select class="form-select" name="payment" id="payment" disabled>
                             <option value=" ">Select one</option>
                             <option value="0" {{ $transaction->payment == 0 ? 'selected' : '' }}>Belum Bayar
@@ -144,10 +150,16 @@
                 </div>
                 <div class="col-md">
                     <div class="mb-3">
-                        <label for="status" class="form-label">Status</label>
+                        <label for="status" class="form-label">Status
+                            @if ($transaction->status == 0)
+                                <span class="text-warning"><i class="ti ti-alert-circle"></i> </span>
+                            @else
+                                <span class="text-success"> ✔</span>
+                            @endif
+                        </label>
                         <input type="text" class="form-control" name="status" id="status"
                             aria-describedby="helpId" placeholder="status"
-                            value="{{ $transaction->status == 0 ? 'Belum Bayar' : 'Lunas' }}" disabled>
+                            value="{{ $transaction->status == 0 ? 'Pengerjaan' : 'Selesai' }}" disabled>
                     </div>
                 </div>
             </div>
