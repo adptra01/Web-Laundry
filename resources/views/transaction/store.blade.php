@@ -34,7 +34,7 @@
                       <div class="mb-3">
                           <label for="costumer" class="form-label">Nama Pelanggan</label>
                           <input type="text" class="form-control" name="costumer" id="costumer"
-                              aria-describedby="helpId" placeholder="Enter name costumer ">
+                              aria-describedby="helpId" placeholder="Enter name costumer" value="{{ old('costumer') }}">
                           @error('costumer')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
@@ -42,14 +42,14 @@
                       <div class="mb-3">
                           <label for="telp" class="form-label">No. Telepon</label>
                           <input type="number" class="form-control" name="telp" id="telp"
-                              aria-describedby="helpId" placeholder="Enter telp costumer">
+                              aria-describedby="helpId" placeholder="Enter telp costumer" value="{{ old('telp') }}">
                           @error('telp')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3">
                           <label for="address" class="form-label">Alamat</label>
-                          <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter address costumer"></textarea>
+                          <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter address costumer">{{ old('address') }}</textarea>
                           @error('address')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror

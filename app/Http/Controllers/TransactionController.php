@@ -21,7 +21,7 @@ class TransactionController extends Controller
     }
     public function store(TransactionRequest $request)
     {
-        $invoice = 'LDRY/'.Carbon::now()->format('dmy').$request->costumer;
+        $invoice = 'LDRY/'.Carbon::now()->format('dmy').'/'.$request->costumer;
         Transaction::create([
             'category_id' => $request->category_id,
             'service_id' => $request->service_id,
@@ -51,5 +51,39 @@ class TransactionController extends Controller
         return view('transaction.report', [
             'transactions' => Transaction::get()
         ]);
+    }
+
+    public function invoice($id)
+    {
+        return view('transaction.invoice', [
+            'transaction' => Transaction::whereId($id)->first()
+        ]);
+    }
+
+    public function payment($id)
+    {
+        $transaction = Transaction::whereId($id)->first();
+        if ($transaction->payment == true) {
+
+            return back()->with('success', 'Maap, pembayaran telah dilunasi diawal');
+
+        } elseif ($transaction->payment == false) {
+
+            Transaction::whereId($id)->update([
+                'payment' => true
+            ]);
+
+            return back()->with('success', 'Pembayaran telah dilunasi');
+        }
+
+    }
+
+    public function update($id)
+    {
+        Transaction::whereId($id)->update([
+            'status' => true
+        ]);
+
+        return back()->with('success', 'Laundry telah selesai');
     }
 }

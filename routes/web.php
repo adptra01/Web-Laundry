@@ -52,9 +52,11 @@ Route::prefix('transactions')->group(function () {
     Route::get('/', [TransactionController::class, 'index'])->name('transactions');
     Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
     Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
-    Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
     Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
-    Route::get('/report', [TransactionController::class, 'report'])->name('transactions.report');
 
+    Route::get('/report', [TransactionController::class, 'report'])->name('transactions.report');
+    Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
+    Route::put('/{id}/payment', [TransactionController::class, 'payment'])->name('transactions.payment');
+    Route::get('/{id}/invoice', [TransactionController::class, 'invoice'])->name('transactions.invoice');
 });
 

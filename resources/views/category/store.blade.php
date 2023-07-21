@@ -23,7 +23,7 @@
                       <div class="mb-3">
                           <label for="name" class="form-label">Nama Jenis</label>
                           <input type="text" class="form-control" name="name" id="name"
-                              aria-describedby="helpId" placeholder="Enter new name">
+                              value="{{ old('name') }}" aria-describedby="helpId" placeholder="Enter new name">
                           @error('name')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
@@ -31,7 +31,7 @@
                       <div class="mb-3">
                           <label for="estimate" class="form-label">Perkiraan waktu (Estimasi)</label>
                           <input type="text" class="form-control" name="estimate" id="estimate"
-                              aria-describedby="helpId" placeholder="Enter estimate category">
+                              aria-describedby="helpId" value="{{ old('estimate') }}" placeholder="Enter estimate category">
                           @error('estimate')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror

@@ -30,11 +30,28 @@
                                 <td><span
                                         class="badge bg-{{ $item->payment == 0 ? 'danger' : 'success' }}">{{ $item->payment == 0 ? 'Belum Bayar' : 'Lunas' }}</span>
                                 </td>
-                                <td>{{ $item->totalTransaction }}</td>
+                                <td>{{ number_format($item->totalTransaction, 0, ',', '.') }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
+                                        @if ($item->payment == false)
+                                            <form action="{{ route('transactions.payment', $item->id) }}"
+                                                method="post">
+                                                @csrf
+                                                @method('put')
+                                                <button type="submit" class="btn btn-primary btn-sm">Bayar</button>
+                                            </form>
+                                        @endif
+                                        @if ($item->status == false)
+                                            <form action="{{ route('transactions.update', $item->id) }}" method="post">
+                                                @csrf
+                                                @method('put')
+                                                <button type="submit" class="btn btn-success btn-sm">Selesai</button>
+                                            </form>
+                                        @endif
                                         <a class="btn btn-secondary btn-sm"
                                             href="{{ route('transactions.show', $item->id) }}" role="button">Lihat</a>
+                                        <a class="btn btn-dark btn-sm"
+                                            href="{{ route('transactions.invoice', $item->id) }}" role="button">Invoice</a>
                                         <form action="{{ route('transactions.destroy', $item->id) }}" method="post">
                                             @csrf
                                             @method('delete')

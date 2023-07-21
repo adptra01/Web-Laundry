@@ -25,7 +25,9 @@
                           <select class="form-select" name="category_id" id="category_id">
                               <option selected disabled>Select one</option>
                               @foreach ($categories as $item)
-                                  <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                  <option value="{{ $item->id }}"
+                                      {{ old('category_id') == $item->id ? 'selected' : '' }}>{{ $item->name }}
+                                  </option>
                               @endforeach
                           </select>
                           @error('category_id')
@@ -35,7 +37,7 @@
                       <div class="mb-3">
                           <label for="name" class="form-label">Nama Layanan</label>
                           <input type="text" class="form-control" name="name" id="name"
-                              aria-describedby="helpId" placeholder="Enter new name">
+                              aria-describedby="helpId" value="{{ old('name') }}" placeholder="Enter new name">
                           @error('name')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
@@ -43,7 +45,7 @@
                       <div class="mb-3">
                           <label for="price" class="form-label">Harga </label>
                           <input type="number" class="form-control" name="price" id="price"
-                              aria-describedby="helpId" placeholder="Enter price category">
+                              aria-describedby="helpId" value="{{ old('price') }}" placeholder="Enter price category">
                           @error('price')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
@@ -52,8 +54,10 @@
                           <label for="unit" class="form-label">Satuan</label>
                           <select class="form-select" name="unit" id="unit">
                               <option selected disabled>Select one</option>
-                              <option value="Kg">Kg</option>
-                              <option value="Pcs">Pcs</option>
+                              <option value="Kg" {{ old('unit') == 'Kg' ? 'selected' : '' }}>Kg
+                              </option>
+                              <option value="Pcs" {{ old('unit') == 'Pcs' ? 'selected' : '' }}>Pcs
+                              </option>
                           </select>
                           @error('unit')
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>

@@ -23,7 +23,7 @@
                                 <td>{{ ++$no }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->category->name }}</td>
-                                <td>{{ $item->price . '/' . $item->unit }}</td>
+                                <td>{{ number_format($item->price, 0, ',', '.') . ' /' . $item->unit }}</td>
                                 <td>
                                     <div class="d-flex justify-content-center gap-2">
                                         <a class="btn btn-secondary btn-sm" href="{{ route('services.show', $item->id) }}"

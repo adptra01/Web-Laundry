@@ -2,7 +2,7 @@
     @if ($categories)
         <div class="mb-3">
             <label for="category_id" class="form-label">Pilih Paket</label>
-            <select wire:model="selectedCategoryId" class="form-select" name="category_id" id="category_id">
+            <select wire:model="selectedCategoryId" class="form-select" name="category_id" id="category_id" required>
                 <option value="" selected>Select one</option>
                 @foreach ($categories as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -17,7 +17,7 @@
     @if ($services)
         <div class="mb-3">
             <label for="service_id" class="form-label">Pilih Layanan</label>
-            <select wire:model="selectedServiceId" class="form-select" name="service_id" id="service_id">
+            <select wire:model="selectedServiceId" class="form-select" name="service_id" id="service_id" required>
                 <option value="" selected>Select one</option>
                 @foreach ($services as $item)
                     <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -47,7 +47,7 @@
                 <div class="mb-3">
                     <label for="weight" class="form-label">Berat</label>
                     <input wire:model="weight" type="number" class="form-control" name="weight" id="weight"
-                        aria-describedby="helpId" placeholder="Weight" step="0.01">
+                        aria-describedby="helpId" placeholder="Weight" step="0.01" required>
                     @error('weight')
                         <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                     @enderror

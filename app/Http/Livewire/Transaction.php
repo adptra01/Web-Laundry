@@ -13,7 +13,8 @@ class Transaction extends Component
     public $selectedCategoryId;
     public $selectedServiceId;
     public $servicePrice;
-    public $weight = 1;
+    public $weight = 0;
+    // public $weight = 1;
     public $totalTransaction;
 
     public function mount()

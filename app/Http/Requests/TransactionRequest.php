@@ -24,16 +24,13 @@ class TransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required|integer',
-            'service_id' => 'required|integer',
+            'category_id' => 'required',
+            'service_id' => 'required',
             'costumer' => 'required|min:3',
-            'telp' => '',
-            'address' => '',
             'weight' => 'required',
             'totalTransaction' => 'required',
-            'status' => 'required|boolean',
             'payment' => 'required',
-            'invoice' => '',
+
         ];
     }
 }
