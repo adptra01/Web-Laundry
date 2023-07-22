@@ -179,30 +179,31 @@
                 <h3 class="fw-bold text-primary">{{ $transaction->costumer }}</h3>
             </td>
             <td>
-                <button class="btn btn-primary"></button>
             </td>
         </tr>
         <tr>
             <td>
-                {{ $transaction->no_resi }}
+
             </td>
         </tr>
         <tr>
             <td>
                 Invoice Date: <strong>{{ Carbon\carbon::parse($transaction->created_at)->format('l, d M Y') }}</strong>
             </td>
-            <td>
-                {{ $city ?? '' }}, {{ $address->detail ?? '' }}
-            </td>
+            <td class="text-end">
+                <strong>{{ $transaction->telp == null ? '-' : $transaction->telp }}</strong>
+                </td>
         </tr>
         <tr>
             <td>
                 Invoice No: <strong>{{ $transaction->invoice }}</strong>
             </td>
-
-            <td>
-                {{ $transaction->no_hp }}
+            <td class="text-end">
+                <strong>{{ $transaction->address }}</strong>
             </td>
+        </tr>
+        <tr>
+            <td>Payment Date : <strong>{{ $transaction->payment == 0 ? '-' : Carbon\carbon::parse($transaction->updated_at)->format('l, d M Y') }}</strong></td>
         </tr>
     </table>
     <div class="table-responsive mt-5">
@@ -210,52 +211,38 @@
         align-middle">
             <thead>
                 <tr class="text-center">
-                    <th>Item</th>
-                    <th>Qty</th>
-                    <th>Harga</th>
-                    <th>Subtotal</th>
+                    <th>Paket</th>
+                    <th>Layanan</th>
+                    <th>Berat X Harga</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                <tr>
-                    <td>
-                        .<div class="row justify-content-center align-items-center g-1">
-                            <div class="col"><img src="{{ Storage::url($transaction->image) }}"
-                                    style="width: 100px; object-fit: cover;" alt="{{ $transaction->image }}"></div>
-                            <div class="col">
-                                <p>{{ $transaction->nama_produk }}</p>
-                            </div>
-                        </div>
-                    </td>
-                    <td>{{ $transaction->qty }} X</td>
-                    <td>Rp. {{ number_format($transaction->price, 2, ',', '.') }}</td>
-                    <td>Rp. {{ number_format($transaction->qty * $transaction->price, 2, ',', '.') }}</td>
+                <tr class="text-center">
+                    <td>{{ $transaction->category->name }}</td>
+                    <td>{{ $transaction->service->name }}</td>
+                    <td>{{ $transaction->weight }} X {{ number_format($transaction->service->price, 0, ',', '.') . '/' .$transaction->service->unit }}</td>
                 </tr>
             </tbody>
             <tfoot>
-                <tr>
-                    <td>Biaya Tambahan : </td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        @if ($transaction->metode_pembayaran == 'cod')
-                            Rp. {{ number_format(10000, 2, ',', '.') }}
-                        @else
-                            Rp. {{ number_format(0, 2, ',', '.') }}
-                        @endif
-                    </td>
-                </tr>
-                <tr>
-                    <td>Ongkir : </td>
-                    <td></td>
-                    <td></td>
-                    <td>Rp. {{ number_format($transaction->ongkir, 2, ',', '.') }}</td>
-                </tr>
-                <tr>
+                <tr class="text-center">
                     <td class="fw-bold text-primary">Total : </td>
                     <td></td>
+                    <td class="fw-bold text-primary">{{ number_format($transaction->totalTransaction, 0, ',', '.') }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td style="color:transparent;">Lorem.</td>
+                    <td style="color:transparent;">Lorem.</td>
+                    <td style="color:transparent;">Lorem.</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="fw-bold text-primary">Status : </td>
                     <td></td>
-                    <td class="fw-bold text-primary">Rp. {{ number_format($transaction->subtotal, 2, ',', '.') }}</td>
+                    <td class="fw-bold text-{{ $transaction->status == 0 ? 'danger' : 'primary' }}">{{ $transaction->status == 0 ? 'Pengerjaan' : 'Selesai' }}</td>
+                </tr>
+                <tr class="text-center">
+                    <td class="fw-bold text-primary">Pembayaran : </td>
+                    <td></td>
+                    <td class="fw-bold text-{{ $transaction->payment == 0 ? 'danger' : 'primary' }}">{{ $transaction->payment == 0 ? 'Belum Bayar' : 'Lunas' }}</td>
                 </tr>
             </tfoot>
         </table>
@@ -263,11 +250,6 @@
 
 
     <div class="footer">
-        <div class="footer-info">
-            <span>{{ $store->name_store ?? '' }}</span> |
-            <span>{{ $cityStore->title ?? '' }}, {{ $store->detail ?? '' }}</span> |
-            <span>{{ $store->telp ?? '' }}</span>
-        </div>
         <div class="footer-thanks">
             <span>❤ Thank you!</span>
         </div>

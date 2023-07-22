@@ -27,7 +27,10 @@ Auth::routes([
     'register' => false
 ]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function () {
+
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('categories')->group(function () {
 
@@ -62,3 +65,5 @@ Route::prefix('transactions')->group(function () {
     Route::get('/{id}/invoice', [TransactionController::class, 'invoice'])->name('transactions.invoice');
 });
 
+
+});

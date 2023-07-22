@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? '' }} - Alfarizy Laundry </title>
+    <title>{{ $title ?? '' }} - Laundry Alfarizi </title>
     <link rel="shortcut icon" type="image/png" href="/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="/assets/css/styles.min.css" />
     @yield('css')
@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <x-datetarget></x-datetarget>
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
@@ -32,18 +33,6 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
                     <x-nav></x-nav>
-                    <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
-                        <div class="d-flex">
-                            <div class="unlimited-access-title me-3">
-                                <h6 class="fw-semibold fs-4 mb-6 text-dark w-85">Upgrade to pro</h6>
-                                <a href="https://adminmart.com/product/modernize-bootstrap-5-admin-template/"
-                                    target="_blank" class="btn btn-primary fs-2 fw-semibold lh-sm">Buy Pro</a>
-                            </div>
-                            <div class="unlimited-access-img">
-                                <img src="/assets/images/backgrounds/rocket.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
                 </nav>
                 <!-- End Sidebar navigation -->
             </div>
@@ -60,12 +49,6 @@
                             <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse"
                                 href="javascript:void(0)">
                                 <i class="ti ti-menu-2 text-danger"></i>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)">
-                                <i class="ti ti-bell-ringing text-white"></i>
-                                <div class="notification bg-danger rounded-circle"></div>
                             </a>
                         </li>
                     </ul>

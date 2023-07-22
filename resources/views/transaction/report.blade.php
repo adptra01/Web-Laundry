@@ -26,9 +26,9 @@
                                 <td>{{ $item->costumer }}</td>
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->service->name }}
-                                <td>{{ $item->service->price . '/' . $item->service->unit . ' x ' . $item->weight }}
+                                <td>{{ number_format($item->service->price, 0, ',', '.') . '/' . $item->service->unit . ' x ' . $item->weight }}
                                 </td>
-                                <td>{{ $item->totalTransaction }}</td>
+                                <td>{{ number_format($item->totalTransaction, 2, ',', '.') }}</td>
                                 <td><span
                                         class="badge bg-{{ $item->status == 0 ? 'warning' : 'success' }}">{{ $item->status == 0 ? 'Pengerjaan' : 'Selesai' }}</span>
                                 </td>
@@ -36,7 +36,7 @@
                                         class="badge bg-{{ $item->payment == 0 ? 'danger' : 'success' }}">{{ $item->payment == 0 ? 'Belum Bayar' : 'Lunas' }}</span>
                                 </td>
                                 <td>{{ Carbon\carbon::parse($item->updated_at)->format('Y-m-d') }}</td>
-                                <td>{{ $item->payment == 0 ? '-' : Carbon\carbon::parse($item->updated_at)->format('Y-m-d') }}
+                                <td>{{ $item->payment == 0 ? '' : Carbon\carbon::parse($item->updated_at)->format('Y-m-d') }}
                                 </td>
                             </tr>
                         @endforeach

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
+use App\Models\Category;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home', [
+            'categories' => Category::count(),
+            'services' => Service::count(),
+            'transactions' => Transaction::count(),
+        ]);
     }
 }
