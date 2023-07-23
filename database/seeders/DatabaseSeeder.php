@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -20,7 +21,6 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             ServiceSeeder::class,
         ]);
-        // \App\Models\User::factory(10)->create();
 
         User::insert([
             'name' => 'testing',
@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'), // admin
             'remember_token' => Str::random(10),
         ]);
+        Transaction::factory(10)->create();
     }
 }
