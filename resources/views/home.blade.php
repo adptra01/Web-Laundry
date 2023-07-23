@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
-                        <h6><strong>Jumlah Kategori Paket</strong></h6>
+                        <h6><strong>Jumlah Transaksi</strong></h6>
                         <div class="d-flex justify-content-between">
                             <h1><i class="ti ti-ad-2"></i></h1>
                             <h3><Strong>{{ $transactions }}</Strong></h3>

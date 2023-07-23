@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Modernize Free</title>
+    <title>Laundry Al-Farizi</title>
     <link rel="shortcut icon" type="image/png" href="/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="/assets/css/styles.min.css" />
 </head>
@@ -22,7 +22,7 @@
                             <div class="card-body">
                                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="/assets/images/logos/favicon.png" width="15" alt="">
-                                    <strong>Laundry Alfarizi</strong>
+                                    <strong>Laundry Al-Farizi</strong>
                                 </a>
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf <div class="mb-3">

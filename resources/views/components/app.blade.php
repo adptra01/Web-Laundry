@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? '' }} - Laundry Alfarizi </title>
+    <title>{{ $title ?? '' }} - Laundry Al-Farizi </title>
     <link rel="shortcut icon" type="image/png" href="/assets/images/logos/favicon.png" />
     <link rel="stylesheet" href="/assets/css/styles.min.css" />
     @yield('css')
@@ -23,9 +23,10 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-between">
-                    <a href="/home" class="text-nowrap logo-img">
-                        <img src="/assets/images/logos/dark-logo.svg" width="180" alt="" />
-                    </a>
+                    <div class="container">
+                        <img src="/assets/images/logos/favicon.png" width="15" alt="">
+                        <strong>Laundry Al-Farizi</strong>
+                    </div>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
                     </div>
@@ -83,12 +84,12 @@
                 <h3 class="mb-3"><strong>{{ $title ?? '' }}</strong></h3>
                 @if (session('success'))
                     <div class="alert alert-primary" role="alert">
-                        <strong>Horeeee 😁</strong> {{ session('success') }}
+                        <strong>🔔 Berhasil</strong> Data telah disimpan
                     </div>
                 @elseif ($errors->any())
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        <strong>Oooouupps 😮</strong> Ada yang salah dengan inputan anda. Harap untuk melakukan
+                        <strong>🔔 Gagal</strong> Ada yang salah dengan inputan anda. Harap untuk melakukan
                         penginputan ulang.
                     </div>
                 @endif

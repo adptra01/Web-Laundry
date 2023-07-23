@@ -18,7 +18,7 @@
     <li class="sidebar-item">
         <a class="sidebar-link" href="{{ route('categories') }}" aria-expanded="false">
             <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-category"></i>
             </span>
             <span class="hide-menu">Jenis Paket</span>
         </a>
@@ -26,7 +26,7 @@
     <li class="sidebar-item">
         <a class="sidebar-link" href="{{ route('services') }}" aria-expanded="false">
             <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-category-2"></i>
             </span>
             <span class="hide-menu">Layanan</span>
         </a>
@@ -38,7 +38,7 @@
     <li class="sidebar-item">
         <a class="sidebar-link" href="{{ route('transactions') }}" aria-expanded="false">
             <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-ad-2"></i>
             </span>
             <span class="hide-menu">Transaksi</span>
         </a>
@@ -46,7 +46,7 @@
     <li class="sidebar-item">
         <a class="sidebar-link" href="{{ route('transactions.report') }}" aria-expanded="false">
             <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-file-analytics"></i>
             </span>
             <span class="hide-menu">Laporan</span>
         </a>
