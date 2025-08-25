@@ -86,4 +86,11 @@ class TransactionController extends Controller
 
         return back()->with('success', 'Laundry telah selesai');
     }
+
+    public function destroy($id)
+    {
+        Transaction::whereId($id)->delete();
+
+        return back()->with('success', 'Deleted transaction successfully');
+    }
 }
