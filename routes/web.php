@@ -22,46 +22,44 @@ Route::get('/', function () {
 });
 
 Auth::routes([
-    'register' => false
+    'register' => false,
 ]);
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::prefix('categories')->group(function () {
 
-Route::prefix('categories')->group(function () {
+        Route::get('/', [CategoryController::class, 'index'])->name('categories');
+        Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('/{id}/show', [CategoryController::class, 'show'])->name('categories.show');
+        Route::put('/{id}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
-    Route::get('/', [CategoryController::class, 'index'])->name('categories');
-    Route::post('/', [CategoryController::class, 'store'])->name('categories.store');
-    Route::get('/{id}/show', [CategoryController::class, 'show'])->name('categories.show');
-    Route::put('/{id}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+    });
 
-});
+    Route::prefix('services')->group(function () {
 
-Route::prefix('services')->group(function () {
+        Route::get('/', [ServiceController::class, 'index'])->name('services');
+        Route::post('/', [ServiceController::class, 'store'])->name('services.store');
+        Route::get('/{id}/show', [ServiceController::class, 'show'])->name('services.show');
+        Route::put('/{id}', [ServiceController::class, 'update'])->name('services.update');
+        Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
 
-    Route::get('/', [ServiceController::class, 'index'])->name('services');
-    Route::post('/', [ServiceController::class, 'store'])->name('services.store');
-    Route::get('/{id}/show', [ServiceController::class, 'show'])->name('services.show');
-    Route::put('/{id}', [ServiceController::class, 'update'])->name('services.update');
-    Route::delete('/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+    });
 
-});
+    Route::prefix('transactions')->group(function () {
 
-Route::prefix('transactions')->group(function () {
+        Route::get('/', [TransactionController::class, 'index'])->name('transactions');
+        Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
+        Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
+        Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
 
-    Route::get('/', [TransactionController::class, 'index'])->name('transactions');
-    Route::post('/', [TransactionController::class, 'store'])->name('transactions.store');
-    Route::get('/{id}/show', [TransactionController::class, 'show'])->name('transactions.show');
-    Route::delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
-
-    Route::get('/report', [TransactionController::class, 'report'])->name('transactions.report');
-    Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
-    Route::put('/{id}/payment', [TransactionController::class, 'payment'])->name('transactions.payment');
-    Route::get('/{id}/invoice', [TransactionController::class, 'invoice'])->name('transactions.invoice');
-});
-
+        Route::get('/report', [TransactionController::class, 'report'])->name('transactions.report');
+        Route::put('/{id}', [TransactionController::class, 'update'])->name('transactions.update');
+        Route::put('/{id}/payment', [TransactionController::class, 'payment'])->name('transactions.payment');
+        Route::get('/{id}/invoice', [TransactionController::class, 'invoice'])->name('transactions.invoice');
+    });
 
 });

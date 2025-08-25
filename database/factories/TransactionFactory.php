@@ -27,7 +27,7 @@ class TransactionFactory extends Factory
             'costumer' => $this->faker->name(),
             'telp' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
-            'weight' => rand(1,10),
+            'weight' => rand(1, 10),
             'totalTransaction' => function () {
                 $randomService = Service::all()->random();
                 $randomNumber = mt_rand(1, 10); // Adjust the range as needed
@@ -36,11 +36,10 @@ class TransactionFactory extends Factory
             },
             'status' => rand(0, 1),
             'payment' => rand(0, 1),
-            'invoice' => 'LDRY/' . Carbon::now()->format('dmy') . '/' . $this->faker->name(),
+            'invoice' => 'LDRY/'.Carbon::now()->format('dmy').'/'.$this->faker->name(),
             'created_at' => $this->faker->dateTimeBetween('-1 years', now()),
-            'updated_at' => $this->faker->dateTimeBetween('-1 years', now())
+            'updated_at' => $this->faker->dateTimeBetween('-1 years', now()),
         ];
 
-
-            }
+    }
 }

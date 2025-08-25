@@ -17,24 +17,23 @@ class CategorySeeder extends Seeder
         $data = [
             [
                 'name' => 'Reguler (2 Hari)',
-                'estimate' => '(Misal antar hari Jumat selesai Minggu)'
+                'estimate' => '(Misal antar hari Jumat selesai Minggu)',
             ],
             [
                 'name' => 'Express 12 Jam',
-                'estimate' => '(Antar Pagi selesai Sore/Malam)'
+                'estimate' => '(Antar Pagi selesai Sore/Malam)',
             ],
             [
                 'name' => 'Express 24 Jam',
-                'estimate' => '(Misal antar hari Sabtu selesai Minggu)'
+                'estimate' => '(Misal antar hari Sabtu selesai Minggu)',
             ],
             [
                 'name' => 'Dan lain-lain',
-                'estimate' => '(Tidak di ketahui)'
+                'estimate' => '(Tidak di ketahui)',
             ],
 
         ];
 
         Category::insert($data);
     }
-
 }

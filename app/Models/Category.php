@@ -10,13 +10,14 @@ class Category extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'estimate'
+        'name', 'estimate',
     ];
 
     public function services()
     {
         return $this->hasMany(Services::class);
     }
+
     public function transactions()
     {
         return $this->hasMany(Transaction::class);

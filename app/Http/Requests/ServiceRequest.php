@@ -28,6 +28,6 @@ class ServiceRequest extends FormRequest
             'name' => 'required|min:5',
             'price' => 'required|min:4|integer',
             'unit' => 'required',
-         ];
+        ];
     }
 }

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
 use App\Models\Category;
 use App\Models\Service;
-use Illuminate\Http\Request;
+use App\Models\Transaction;
 
 class HomeController extends Controller
 {

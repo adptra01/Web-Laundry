@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CategoryRequest;
 use App\Models\Category;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -16,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         return view('category.index', [
-            'categories' => Category::latest()->get()
+            'categories' => Category::latest()->get(),
         ]);
     }
 
@@ -26,13 +25,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
     public function store(CategoryRequest $request)
     {
         Category::create([
             'name' => $request->name,
             'estimate' => $request->estimate,
         ]);
+
         return back()->with('success', 'Created category successfully');
     }
 
@@ -45,7 +44,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         return view('category.show', [
-            'category' => Category::whereId($id)->first()
+            'category' => Category::whereId($id)->first(),
         ]);
     }
 
@@ -62,6 +61,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'estimate' => $request->estimate,
         ]);
+
         return redirect()->route('categories')->with('success', 'Updated category successfully');
 
     }
@@ -75,6 +75,7 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::whereId($id)->delete();
+
         return back()->with('success', 'Deleted category successfully');
     }
 }

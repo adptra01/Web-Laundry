@@ -9,11 +9,17 @@ use Livewire\Component;
 class Transaction extends Component
 {
     public $categories;
+
     public $services;
+
     public $selectedCategoryId;
+
     public $selectedServiceId;
+
     public $servicePrice;
+
     public $weight = 0;
+
     // public $weight = 1;
     public $totalTransaction;
 
@@ -41,6 +47,7 @@ class Transaction extends Component
     {
         $this->calculateTotalTransaction();
     }
+
     public function calculateTotalTransaction()
     {
         if ($this->selectedServiceId && $this->weight) {

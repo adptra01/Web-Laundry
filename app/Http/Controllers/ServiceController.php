@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -16,6 +15,7 @@ class ServiceController extends Controller
             'services' => Service::latest()->get(),
         ]);
     }
+
     public function store(ServiceRequest $request)
     {
         Service::create([
@@ -30,7 +30,7 @@ class ServiceController extends Controller
 
     public function show($id)
     {
-        return view('service.show',[
+        return view('service.show', [
             'service' => Service::whereId($id)->first(),
             'categories' => Category::get(),
         ]);
@@ -44,12 +44,14 @@ class ServiceController extends Controller
             'price' => $request->price,
             'unit' => $request->unit,
         ]);
+
         return redirect()->route('services')->with('success', 'Updated service successfully');
     }
 
     public function destroy($id)
     {
         Service::whereId($id)->delete();
+
         return back()->with('success', 'Deleted service successfully');
 
     }

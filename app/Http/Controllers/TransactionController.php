@@ -7,7 +7,6 @@ use App\Models\Category;
 use App\Models\Service;
 use App\Models\Transaction;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
@@ -19,6 +18,7 @@ class TransactionController extends Controller
             'categories' => Category::get(),
         ]);
     }
+
     public function store(TransactionRequest $request)
     {
         $invoice = 'LDRY/'.Carbon::now()->format('dmy').'/'.$request->costumer;
@@ -31,7 +31,7 @@ class TransactionController extends Controller
             'telp' => $request->telp,
             'address' => $request->address,
             'payment' => $request->payment,
-            'invoice' => $invoice
+            'invoice' => $invoice,
         ]);
 
         return back()->with('success', 'Created transaction successfully');
@@ -49,14 +49,14 @@ class TransactionController extends Controller
     public function report()
     {
         return view('transaction.report', [
-            'transactions' => Transaction::get()
+            'transactions' => Transaction::get(),
         ]);
     }
 
     public function invoice($id)
     {
         return view('transaction.invoice', [
-            'transaction' => Transaction::whereId($id)->first()
+            'transaction' => Transaction::whereId($id)->first(),
         ]);
     }
 
@@ -70,7 +70,7 @@ class TransactionController extends Controller
         } elseif ($transaction->payment == false) {
 
             Transaction::whereId($id)->update([
-                'payment' => true
+                'payment' => true,
             ]);
 
             return back()->with('success', 'Pembayaran telah dilunasi');
@@ -81,7 +81,7 @@ class TransactionController extends Controller
     public function update($id)
     {
         Transaction::whereId($id)->update([
-            'status' => true
+            'status' => true,
         ]);
 
         return back()->with('success', 'Laundry telah selesai');
