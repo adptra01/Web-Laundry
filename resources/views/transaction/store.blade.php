@@ -14,12 +14,12 @@
                           </p>
                       </div>
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
               </div>
-              <form action="{{ route('transactions.store') }}" method="post">
+              <form action="{{ route("transactions.store") }}" method="post">
                   @csrf
                   <div class="modal-body">
-                      @livewire('transaction')
+                      @livewire("transaction")
                       <div class="mb-3">
                           <label for="payment" class="form-label">Pembayaran</label>
                           <select class="form-select" name="payment" id="payment">
@@ -27,35 +27,35 @@
                               <option value="0">Belum Bayar</option>
                               <option value="1">Lunas</option>
                           </select>
-                          @error('payment')
+                          @error("payment")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3">
                           <label for="costumer" class="form-label">Nama Pelanggan</label>
                           <input type="text" class="form-control" name="costumer" id="costumer"
-                              aria-describedby="helpId" placeholder="Enter name costumer" value="{{ old('costumer') }}">
-                          @error('costumer')
+                              aria-describedby="helpId" placeholder="Enter name costumer" value="{{ old("costumer") }}">
+                          @error("costumer")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3">
                           <label for="telp" class="form-label">No. Telepon</label>
                           <input type="number" class="form-control" name="telp" id="telp"
-                              aria-describedby="helpId" placeholder="Enter telp costumer" value="{{ old('telp') }}">
-                          @error('telp')
+                              aria-describedby="helpId" placeholder="Enter telp costumer" value="{{ old("telp") }}">
+                          @error("telp")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3">
                           <label for="address" class="form-label">Alamat</label>
-                          <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter address costumer">{{ old('address') }}</textarea>
-                          @error('address')
+                          <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter address costumer">{{ old("address") }}</textarea>
+                          @error("address")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3 text-end">
-                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Batal</button>
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                   </div>

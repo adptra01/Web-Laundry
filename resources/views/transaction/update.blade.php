@@ -15,17 +15,17 @@
                       </div>
 
                   </div>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
               </div>
-              <form action="{{ route('categories.update', $category->id) }}" method="post">
+              <form action="{{ route("categories.update", $category->id) }}" method="post">
                   @csrf
-                  @method('put')
+                  @method("put")
                   <div class="modal-body">
                       <div class="mb-3">
                           <label for="name" class="form-label">Nama Jenis</label>
                           <input type="text" class="form-control" name="name" id="name"
                               aria-describedby="helpId" value="{{ $category->name }}">
-                          @error('name')
+                          @error("name")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
@@ -33,12 +33,12 @@
                           <label for="estimate" class="form-label">Perkiraan waktu (Estimasi)</label>
                           <input type="text" class="form-control" name="estimate" id="estimate"
                               aria-describedby="helpId" value="{{ $category->estimate }}">
-                          @error('estimate')
+                          @error("estimate")
                               <small id="helpId" class="form-text text-danger">{{ $message }}</small>
                           @enderror
                       </div>
                       <div class="mb-3 text-end">
-                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Batal</button>
                           <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                   </div>
